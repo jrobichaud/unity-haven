@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda211393ef4b4e1fb01c43603fe3299, type: 3}
+  m_Name: CoreEditor.AssemblyPacker
+  m_EditorClassIdentifier: 
+  m_Sources:
+  - {fileID: 102900000, guid: 16430897e04bb408dbc99512f7b81665, type: 3}
+  m_AssemblyReferences: []
+  m_Defines: []
+  m_ExportInlineDocumentation: 0
+  m_IsDebug: 0
+  m_AssemblyMeta:
+    GUID: 6364f0c3d112e4f79bf234a8e3137d34
+  m_AssemblyMDBMeta:
+    GUID: 
+  m_DocumentationMeta:
+    GUID: 
