@@ -7,11 +7,11 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 3. Wait for the compilation process to finish
 4. Save the resulting Unity Asset Package
   * There are "normal" error displaying in Unity's console after the build is completed.
-    * :exclamation:`Reload Assembly called from managed code directly. This will cause a crash. You should never refresh assets in synchronous mode or enter playmode synchronously from script code.`
+    * :exclamation: `Reload Assembly called from managed code directly. This will cause a crash. You should never refresh assets in synchronous mode or enter playmode synchronously from script code.`
 
-    * :exclamation:`InvalidOperationException: Operation is not valid due to the current state of the object`
+    * :exclamation: `InvalidOperationException: Operation is not valid due to the current state of the object`
 5. Import this package to your project
-6. Follow the extra step of [Core.Drawing Installation Notes](#core.drawing-installation-notes)
+6. Follow the extra step of [Core.Drawing Installation Notes](#coredrawing-installation-notes)
 
 ## Core
 
