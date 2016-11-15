@@ -125,8 +125,6 @@ MonoBehaviour:
   thisArrayIsSortable:
   - A
   - B
-  - C
-  - D
   itAlsoWorksWithComplexData:
   - someInt: 1
     someCurve:
@@ -163,7 +161,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
   thisRegexShouldMatch: Foo.Bar
-  thisShouldNoBeNull: {fileID: 0}
+  thisShouldNotBeNull: {fileID: 0}
   imageSizeCheck: {fileID: 0}
   sortingLayer: Default
   obsolete: 1
