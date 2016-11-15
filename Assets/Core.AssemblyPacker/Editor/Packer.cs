@@ -273,7 +273,11 @@ namespace CoreEditor.AssemblyPacker
 			{
 				return (Path.GetDirectoryName(EditorApplication.applicationPath) + "/Data/");
 			}
+			#if UNITY_5_4_OR_NEWER
+			return (EditorApplication.applicationPath + "/Contents/");
+			#else
 			return (EditorApplication.applicationPath + "/Contents/Frameworks/");
+			#endif
 		}
 		
 		public static string MonoFolder{
