@@ -15,6 +15,25 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 
 ## Core
 
+### Find References
+1. Right-click on an asset
+2. Select Find Reference(s)
+3. Look at Unity's console for this kind of output:
+
+```
+[ Selected File(s) ]
+Assets/3DimensionCube/Shader/3DStandardMask.shader
+
+[ Direct Reference(s) ]
+Assets/3DimensionCube/Material/XMask.mat
+Assets/3DimensionCube/Material/YMask.mat
+Assets/3DimensionCube/Material/ZMask.mat
+
+[ Indirect Reference(s) or Rare Assets that have both direct AND indirect reference on the selected asset(s) ]
+Assets/3DimensionCube/3DimensionCube.prefab
+Assets/Presentations/UnityUI/FindTheMistakes.unity
+```
+
 ## Core.AssemblyPacker
 
 ## Core.Drawing
