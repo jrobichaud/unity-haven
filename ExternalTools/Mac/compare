@@ -1,0 +1,3 @@
+#!/bin/bash
+# Uses Installed Version until standlone version is installed
+/opt/local/bin/compare $*
