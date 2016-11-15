@@ -2,8 +2,8 @@
 Various tools or code snippets I developed when I was a Unity Game Developer
 
 ## Exporting all the tools to your project
-1. Select Core.Complete assets
-2. Press on Build and Pack
+1. Select _Core.Complete_ asset
+2. Press on _Build and Pack_ in the Inspector
 3. Wait for the compilation process to finish
 4. Save the resulting Unity Asset Package
   * There are "normal" error displaying in Unity's console after the build is completed.
@@ -16,14 +16,15 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 ## Core
 
 ### ExtendedInspector
+It is highly recommended to checkout the project and experience it yourself.
+[Source](Assets/Core/Demo/Attributes.cs)
 
 ![](screenshots/Core/attributes.png)
 
-[Source](Assets/Core/Demo/Attributes.cs)
 
 ### Find References
 1. Right-click on an asset
-2. Select Find Reference(s)
+2. Select _Find Reference(s)_
 3. Look at Unity's console for this kind of output:
 
 ```
@@ -63,10 +64,10 @@ This tool automatically converts 16bit images assets using [dithering](https://e
 ### Shear UI
 ### SpriteUV1
 
-Adds a second normalized coordinate relative to the UI element. It allows to create special shaders in order to overlay the element by example.
+Adds a second normalized coordinate relative to the UI element. It allows to create special shaders in order to overlay the element (or else).
 
 ## Notes
 
-Special thanks to @elaberge for several contributions.
+Special thanks to [@elaberge](https://github.com/elaberge) for several contributions.
 
 Note: The :trollface: image belongs to it's original owner and therefore is not part of this repository's licence.
