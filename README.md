@@ -17,7 +17,7 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 
 ### ExtendedInspector
 
-![]](screenshots/Core/attributes.png)
+![](screenshots/Core/attributes.png)
 
 [Source](Assets/Core/Demo/Attributes.cs)
 
