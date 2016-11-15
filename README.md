@@ -15,6 +15,12 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 
 ## Core
 
+### ExtendedInspector
+
+![]](screenshots/Core/attributes.png)
+
+[Source](Assets/Core/Demo/Attributes.cs)
+
 ### Find References
 1. Right-click on an asset
 2. Select Find Reference(s)
@@ -22,16 +28,16 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 
 ```
 [ Selected File(s) ]
-Assets/3DimensionCube/Shader/3DStandardMask.shader
+Assets/Varia/Stencils/3DimensionCube/Shader/3DStandardMask.shader
 
 [ Direct Reference(s) ]
-Assets/3DimensionCube/Material/XMask.mat
-Assets/3DimensionCube/Material/YMask.mat
-Assets/3DimensionCube/Material/ZMask.mat
+Assets/Varia/Stencils/3DimensionCube/Material/XMask.mat
+Assets/Varia/Stencils/3DimensionCube/Material/YMask.mat
+Assets/Varia/Stencils/3DimensionCube/Material/ZMask.mat
 
 [ Indirect Reference(s) or Rare Assets that have both direct AND indirect reference on the selected asset(s) ]
-Assets/3DimensionCube/3DimensionCube.prefab
-Assets/Presentations/UnityUI/FindTheMistakes.unity
+Assets/Varia/Stencils/3DimensionCube/3DimensionCube.prefab
+Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ```
 
 ## Core.AssemblyPacker
