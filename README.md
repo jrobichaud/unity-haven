@@ -19,6 +19,13 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 It is highly recommended to checkout the project and experience it yourself.
 [Source](Assets/Core/Demo/Attributes.cs)
 
+#### Reorderable
+![](screenshots/Core/reorderable.gif)
+
+#### ToolTip
+![](screenshots/Core/tooltip.gif)
+
+#### All
 ![](screenshots/Core/attributes.png)
 
 
