@@ -55,7 +55,7 @@ Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ### Ditherer
 | Original  | RGBA Without Dithering  | RGBA With Dithering |
 |-----------|-------------------------|---------------------|
-|![Original](Assets/Core.Drawing/Demo/gradient.png) |![Without dithering](screenshots/Core.Drawing/without_dithering.png) | ![With dithering](screenshots/Core.Drawing/with_dithering.png)|
+|![Original](Assets/Core.Drawing/Demo/gradient.png). |![Without dithering](screenshots/Core.Drawing/without_dithering.png) | ![With dithering](screenshots/Core.Drawing/with_dithering.png)|
 
 This tool automatically converts 16bit images assets using [dithering](https://en.wikipedia.org/wiki/Dither) through [ImageMagick](https://www.imagemagick.org).
 
@@ -75,6 +75,13 @@ This tool automatically converts 16bit images assets using [dithering](https://e
 ### SpriteUV1
 
 Adds a second normalized coordinate relative to the UI element. It allows to create special shaders in order to overlay the element (or else).
+
+## Varia
+
+### Stencil
+A 3 dimensional cube (not a pleonasm)
+
+![](screenshots/Varia/3dimensions_cube.gif)
 
 ## Notes
 
