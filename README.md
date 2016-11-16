@@ -53,6 +53,9 @@ Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ## Core.Drawing
 
 ### Ditherer
+| Original  | RGBA Without Dithering  | RGBA With Dithering |
+|-----------|-------------------------|---------------------|
+|![Original](Assets/Core.Drawing/Demo/gradient.png). |![Without dithering](screenshots/Core.Drawing/without_dithering.png) | ![With dithering](screenshots/Core.Drawing/with_dithering.png)|
 
 This tool automatically converts 16bit images assets using [dithering](https://en.wikipedia.org/wiki/Dither) through [ImageMagick](https://www.imagemagick.org).
 
