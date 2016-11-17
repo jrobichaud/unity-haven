@@ -73,6 +73,7 @@ namespace CoreEditor.Utils
 			".txt",		
 			".bytes",
 			".xml",
+			".json",
 		};
 
 		const string SaveKey = "ExternalTools2";
