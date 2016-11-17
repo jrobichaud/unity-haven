@@ -60,7 +60,7 @@ Accessible through menu item "Window/Ordered Drag".
 
 ![](screenshots/Core/ordered_drag.gif)
 
-*Note: It may not the most intuitive tool to use however it is the only way I found to do this. It is not possible to sort a selection while it is dragged (Ex: through shortcut or with a mouse over).*
+*Note: It may not be the most intuitive tool to use however it is the only way I found to do this. It is not possible to sort a selection while it is dragged (Ex: through shortcut or with a mouse over).*
 
 #### External Tools 2
 
