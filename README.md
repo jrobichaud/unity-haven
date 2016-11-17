@@ -82,6 +82,9 @@ Some text editors are much more complicated to configure. This tool allows you t
 
 ![](screenshots/Core/external_tools_3.png)
 
+#### Open Project Documentation
+
+Through the menu `Help/Open Project Documentation (readme.md)` you can open the documentation of your project. It makes it more accessible.
 
 ## Core.AssemblyPacker
 
