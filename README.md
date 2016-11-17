@@ -49,6 +49,10 @@ Assets/Varia/Stencils/3DimensionCube/3DimensionCube.prefab
 Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ```
 
+#### NewScriptableObjectHelper
+
+You can instantiate any scriptable through the menu `Asset/Create/ScriptableObject` or Right-click then select `Create/ScriptableObject`. A pop-up will appear somewhere in your screen then select the type of scriptable object you want.
+
 #### Ordered Drag
 
 Unity sorts selection by "instance id" which is fine most of the time.
