@@ -28,8 +28,9 @@ It is highly recommended to checkout the project and experience it yourself.
 #### All
 ![](screenshots/Core/attributes.png)
 
+### Tools
 
-### Find References
+#### Find References
 1. Right-click on an asset
 2. Select _Find Reference(s)_
 3. Look at Unity's console for this kind of output:
@@ -47,6 +48,19 @@ Assets/Varia/Stencils/3DimensionCube/Material/ZMask.mat
 Assets/Varia/Stencils/3DimensionCube/3DimensionCube.prefab
 Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ```
+
+#### Ordered Drag
+
+Unity sorts selection by "instance id" which is fine most of the time.
+When you need to drag ordered assets in an array or in the Hierarchy it can be a real hassle.
+
+With *Ordered Drag* you just drag what you need ordered on the *Ordered Drag* window then you drag it out on where you need it.
+
+Accessible through menu item "Window/Ordered Drag".
+
+![](screenshots/Core/ordered_drag.gif)
+
+*Note: It may not the most intuitive tool to use however it is the only way I found to do this. It is not possible to sort a selection while it is dragged (Ex: through shortcut or with a mouse over).*
 
 ## Core.AssemblyPacker
 
