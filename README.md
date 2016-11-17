@@ -62,6 +62,23 @@ Accessible through menu item "Window/Ordered Drag".
 
 *Note: It may not the most intuitive tool to use however it is the only way I found to do this. It is not possible to sort a selection while it is dragged (Ex: through shortcut or with a mouse over).*
 
+#### External Tools 2
+
+Unity pretty much open all text files in the *External Script Editor* configured in *External Tools* (Ex: MonoDevelop or Visual Studio). If you would like to use other editors for certain type of files, check the file and it will open it in the operating system's default editor. You can specify the syntax when Unity want to open it at a specific line. See the documentation of the editor.
+
+*Examples:*
+* `"{0}":{1}` will send `"path/to_the_file.cs":154`
+* `"{0}" --line {1}` will send `"path/to_the_file.cs" --line 154`
+
+![](screenshots/Core/external_tools_2.png)
+
+#### External Tools 3
+
+Some text editors are much more complicated to configure. This tool allows you to specify the exact line the terminal must call to start the text editor.
+
+![](screenshots/Core/external_tools_3.png)
+
+
 ## Core.AssemblyPacker
 
 ## Core.Drawing
