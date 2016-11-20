@@ -161,7 +161,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
   thisRegexShouldMatch: Foo.Bar
-  thisShouldNotBeNull: {fileID: 0}
+  thisShouldNotBeNull: {fileID: 11500000, guid: 410108c3f4fb84b968795015cff06613,
+    type: 3}
   imageSizeCheck: {fileID: 0}
   sortingLayer: Default
   obsolete: 1

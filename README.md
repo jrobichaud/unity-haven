@@ -106,6 +106,14 @@ Assets/Varia/Stencils/3DimensionCube/3DimensionCube.prefab
 Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 ```
 
+#### Find Broken References
+
+This tool allows helps to find "Missing" on several asset types (".prefab", ".asset" ".mat", ".unity", ".GUISkin", ".anim", and ".controller").
+
+Open with "Window/Find Broken References"
+
+![](screenshots/Core/find_broken_references.png)
+
 #### NewScriptableObjectHelper
 
 You can instantiate any `scriptable` through the `Asset/Create/ScriptableObject` menu or Right-click and select `Create/ScriptableObject`. A pop-up will appear somewhere in your screen, then select the type of scriptable object you want.
