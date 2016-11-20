@@ -16,7 +16,7 @@ Various tools or code snippets I developed when I was a Unity Game Developer
 ## Core
 
 ### ExtendedInspector
-It is highly recommended to checkout the project and experience it yourself.
+It is highly recommended to clone the project and try it yourself.
 [Source](Assets/Core/Demo/Attributes.cs)
 
 #### Reorderable
@@ -30,18 +30,18 @@ It is highly recommended to checkout the project and experience it yourself.
 
 ### Singleton patterns
 
-Sometimes you want to have an object in your scene accessible from everywhere. There is a well documented design pattern the "Singleton" and several examples on the internet on how to do it with Unity MonoBehaviours. [Like this very good implementation ](http://wiki.unity3d.com/index.php/Singleton)
+Sometimes you want to have an object in your scene accessible from everywhere. There is a well documented design pattern called "Singleton" and there are several examples on the internet on how to do it with Unity MonoBehaviours. [Like this very good implementation ](http://wiki.unity3d.com/index.php/Singleton)
 
-The default singleton use the [*RAII idiom*](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) which mean "Resource aquisition is initialization" and they are Persistent for the rest of the execution of the application. However in Unity you may not want this behavior all the time. By example, you may want a MonoBehaviour to be accessible everywhere from a scene but not necessarily last longer than the scene. You may also want to initialize fields on the MonoBehaviour in the scene.
+The default singletons use the [*RAII idiom*](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) which means "Resource aquisition is initialization" and they are _persistent_ for the rest of the execution of the application. However, in Unity, you may not want this behavior all the time. For example, you may want a MonoBehaviour to be accessible everywhere from a scene but not necessarily lasting longer than the scene. You may also want to initialize fields on the MonoBehaviour in the scene.
 
-There are 4 classes you can inherit from depending which type of behaviour you need.
+There are 4 classes you can inherit from depending on which type of behavior you need.
 
-|Lifetime&#8595; / Creation method&#8594;|RAII                     | Scene                    |
-|--------------|-------------------------|--------------------------|
+|Lifetime&#8595; / Creation method&#8594;|RAII| Scene                    |
+|------------------|-------------------------|--------------------------|
 |**Persistent**    | PersistentRAIISingleton | PersistentSceneSingleton |
 |**Non-Persistent**| RAIISingleton           | SceneSingleton           |
 
-To appropriately cleanup the singletons during scene destruction or the when ending execution in Unity Editor, your singletons should to be implemented this way:
+To appropriately clean up the singletons during scene destruction or execution ending in Unity Editor, your singletons should be implemented this way:
 #### RAIISingleton
 ```C#
 using UnityEngine;
@@ -50,13 +50,13 @@ using CoreEngine;
 public class DemoRAIISingleton : RAIISingleton<DemoRAIISingleton>
 {
 	int i = 0;
-	// Using public static methods have better encapsulation for these implementations
+	// Using public static methods provides better encapsulation for these implementations
 	public static void Foo()
 	{
 		// This check prevents the Singleton to be created while Unity Editor is quitting play or when switching scene. It causes bad object leaks.
 		if (IsAvailable)
 		{
-			//Call to Instance will create the instance
+			// Call to Instance will create the instance
 			Debug.Log("DemoRAIISceneSingleton Bar " + Instance.i++);
 		}
 	}
@@ -70,7 +70,7 @@ using CoreEngine;
 public class DemoSceneSingleton : SceneSingleton<DemoSceneSingleton>
 {
 	int i = 0;
-	// Using public static methods have better encapsulation for these implementations
+	// Using public static methods provides better encapsulation for these implementations
 	public static void Foo()
 	{
 		// This check prevents a null reference exception when the scene singleton is not present
@@ -108,16 +108,16 @@ Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 
 #### NewScriptableObjectHelper
 
-You can instantiate any scriptable through the menu `Asset/Create/ScriptableObject` or Right-click then select `Create/ScriptableObject`. A pop-up will appear somewhere in your screen then select the type of scriptable object you want.
+You can instantiate any `scriptable` through the `Asset/Create/ScriptableObject` menu or Right-click and select `Create/ScriptableObject`. A pop-up will appear somewhere in your screen, then select the type of scriptable object you want.
 
 #### Ordered Drag
 
 Unity sorts selection by "instance id" which is fine most of the time.
 When you need to drag ordered assets in an array or in the Hierarchy it can be a real hassle.
 
-With *Ordered Drag* you just drag what you need ordered on the *Ordered Drag* window then you drag it out on where you need it.
+With *Ordered Drag* you just drag what you need ordered on the *Ordered Drag* window then you drag it out on where you need it. The result will be sorted in alphabetical order instead of using "instance id".
 
-Accessible through menu item "Window/Ordered Drag".
+This feature is accessible through menu item "Window/Ordered Drag".
 
 ![](screenshots/Core/ordered_drag.gif)
 
@@ -125,7 +125,7 @@ Accessible through menu item "Window/Ordered Drag".
 
 #### External Tools 2
 
-Unity pretty much open all text files in the *External Script Editor* configured in *External Tools* (Ex: MonoDevelop or Visual Studio). If you would like to use other editors for certain type of files, check the file and it will open it in the operating system's default editor. You can specify the syntax when Unity want to open it at a specific line. See the documentation of the editor.
+Unity pretty much opens all text files in the *External Script Editor* configured in *External Tools* (Ex: MonoDevelop or Visual Studio). If you want to use other editors for certain type of files, check the file and it will open it with the operating system's default editor. You can specify the syntax when Unity wants to open it at a specific line. See the documentation of the editor.
 
 *Examples:*
 * `"{0}":{1}` will send `"path/to_the_file.cs":154`
@@ -135,7 +135,7 @@ Unity pretty much open all text files in the *External Script Editor* configured
 
 #### External Tools 3
 
-Some text editors are much more complicated to configure. This tool allows you to specify the exact line the terminal must call to start the text editor.
+Some text editors are much more complicated to configure. This tool allows you to specify the exact terminal command to execute the desired text editor.
 
 ![](screenshots/Core/external_tools_3.png)
 
