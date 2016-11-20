@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using System.Reflection;
 
 namespace CoreEditor.Utils
 {
@@ -77,16 +78,24 @@ namespace CoreEditor.Utils
 			EditorGUILayout.EndVertical();
 			EditorGUILayout.EndScrollView();
 		}
-		
+
+		static string UnityUIGUID
+		{
+			get{
+				return AssetDatabase.AssetPathToGUID( AppDomain.CurrentDomain.GetAssemblies().
+					SingleOrDefault(assembly => assembly.GetName().Name == "UnityEngine.UI").Location );
+			}
+		}
+
 		void Refresh()
 		{
 			var guidRegex = new Regex( @"guid: ([0-9a-f]{32})" );
 			
 			var metaFiles = from item in AssetDatabase.GetAllAssetPaths()
 				select item + ".meta";
-			
-			var guids = new HashSet<string>(){"0000000000000000d000000000000000","0000000000000000e000000000000000","0000000000000000f000000000000000"};
-			
+
+			var guids = new HashSet<string>(){"0000000000000000d000000000000000","0000000000000000e000000000000000","0000000000000000f000000000000000", UnityUIGUID};
+
 			foreach ( var metaFile in metaFiles )
 			{
 				if ( File.Exists( metaFile ) )
