@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using System.Reflection;
 
 namespace CoreEditor.Utils
 {
