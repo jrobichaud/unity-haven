@@ -108,7 +108,7 @@ Assets/Varia/UnityUICommonMistakes/FindTheMistakes.unity
 
 #### Find Broken References
 
-This tool allows helps to find "Missing" on several asset types (".prefab", ".asset" ".mat", ".unity", ".GUISkin", ".anim", and ".controller").
+This tool helps to find "Missing" (even not visible ones) on several asset types (".prefab", ".asset" ".mat", ".unity", ".GUISkin", ".anim", and ".controller").
 
 Open with "Window/Find Broken References"
 
