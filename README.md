@@ -28,6 +28,63 @@ It is highly recommended to checkout the project and experience it yourself.
 #### All
 ![](screenshots/Core/attributes.png)
 
+### Singleton patterns
+
+Sometimes you want to have an object in your scene accessible from everywhere. There is a well documented design pattern the "Singleton" and several examples on the internet on how to do it with Unity MonoBehaviours. [Like this very good implementation ](http://wiki.unity3d.com/index.php/Singleton)
+
+The default singleton use the [*RAII idiom*](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) which mean "Resource aquisition is initialization" and they are Persistent for the rest of the execution of the application. However in Unity you may not want this behavior all the time. By example, you may want a MonoBehaviour to be accessible everywhere from a scene but not necessarily last longer than the scene. You may also want to initialize fields on the MonoBehaviour in the scene.
+
+There are 4 classes you can inherit from depending which type of behaviour you need.
+
+|Lifetime&#8595; / Creation method&#8594;|RAII                     | Scene                    |
+|--------------|-------------------------|--------------------------|
+|**Persistent**    | PersistentRAIISingleton | PersistentSceneSingleton |
+|**Non-Persistent**| RAIISingleton           | SceneSingleton           |
+
+To appropriately cleanup the singletons during scene destruction or the when ending execution in Unity Editor, your singletons should to be implemented this way:
+#### RAIISingleton
+```C#
+using UnityEngine;
+using CoreEngine;
+
+public class DemoRAIISingleton : RAIISingleton<DemoRAIISingleton>
+{
+	int i = 0;
+	// Using public static methods have better encapsulation for these implementations
+	public static void Foo()
+	{
+		// This check prevents the Singleton to be created while Unity Editor is quitting play or when switching scene. It causes bad object leaks.
+		if (IsAvailable)
+		{
+			//Call to Instance will create the instance
+			Debug.Log("DemoRAIISceneSingleton Bar " + Instance.i++);
+		}
+	}
+}
+```
+#### SceneSingleton
+```C#
+using UnityEngine;
+using CoreEngine;
+
+public class DemoSceneSingleton : SceneSingleton<DemoSceneSingleton>
+{
+	int i = 0;
+	// Using public static methods have better encapsulation for these implementations
+	public static void Foo()
+	{
+		// This check prevents a null reference exception when the scene singleton is not present
+		if (IsAvailable)
+		{
+			// Instance does not create anything
+			Debug.Log("DemoSceneSingleton Bar " + Instance.i++);
+		}
+	}
+}
+
+```
+
+
 ### Tools
 
 #### Find References

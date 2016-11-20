@@ -26,7 +26,7 @@ namespace CoreEngine
 			IsApplicationQuitting = true;
 		}
 		
-		protected static bool HasInstance
+		protected static bool IsAvailable
 		{
 			get
 			{

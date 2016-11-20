@@ -7,7 +7,7 @@ namespace CoreEngine
 	{
 		public static new void StartCoroutine( IEnumerator coroutine )
 		{
-			if ( HasInstance == false )
+			if ( IsAvailable == false )
 				return;
 
 			MonoBehaviour baseComponent = Instance;

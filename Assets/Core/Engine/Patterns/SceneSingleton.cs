@@ -21,7 +21,7 @@ namespace CoreEngine
 			Instance = null;
 		}
 
-		protected static bool HasInstance
+		protected static bool IsAvailable
 		{
 			get
 			{
