@@ -13,7 +13,15 @@ namespace CoreEditor.Utils
 {
 	[Serializable]
 	public class FindBrokenReferences  : EditorWindow
-	{	
+	{
+		const int MetaWidth = 230;
+		const int TypeWidth = 120;
+		const int ObjectWidth = 150;
+		const int InspectWidth = 50;
+		const int LineWidth = 40;
+
+		Regex mCleansTypeName = new Regex(@"^Unity(Editor|Engine)\.");
+	
 		[Serializable]
 		class Result
 		{
@@ -30,6 +38,7 @@ namespace CoreEditor.Utils
 		
 		public void OnEnable()
 		{
+			titleContent = new GUIContent( "Find Broken Refs" );
 			hideFlags = HideFlags.HideAndDontSave;
 			Refresh();
 		}
@@ -41,11 +50,11 @@ namespace CoreEditor.Utils
 			EditorGUILayout.BeginVertical();
 			
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.SelectableLabel("guid", EditorStyles.boldLabel, GUILayout.Width( 230 ));
-			EditorGUILayout.SelectableLabel("Type", EditorStyles.boldLabel, GUILayout.Width( 70 ));
-			EditorGUILayout.SelectableLabel("Object", EditorStyles.boldLabel, GUILayout.Width( 150 ));
+			EditorGUILayout.SelectableLabel("guid", EditorStyles.boldLabel, GUILayout.Width( MetaWidth ));
+			EditorGUILayout.SelectableLabel("Type", EditorStyles.boldLabel, GUILayout.Width( TypeWidth ));
+			EditorGUILayout.SelectableLabel("Object", EditorStyles.boldLabel, GUILayout.Width( ObjectWidth ));
 			GUILayout.Space( 90 );
-			EditorGUILayout.SelectableLabel("Line", EditorStyles.boldLabel, GUILayout.Width( 40 ));
+			EditorGUILayout.SelectableLabel("Line", EditorStyles.boldLabel, GUILayout.Width( LineWidth ));
 			EditorGUILayout.SelectableLabel("Path", EditorStyles.boldLabel);
 			GUILayout.FlexibleSpace();
 			EditorGUILayout.EndHorizontal();
@@ -56,21 +65,36 @@ namespace CoreEditor.Utils
 				var meta = result.meta;
 				var path = result.path;
 				var line = result.line;
-				var asset = AssetDatabase.LoadAssetAtPath( path, typeof(Object) );
-				if ( asset == null )
-					continue;
-				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.SelectableLabel( meta, GUILayout.Width( 230 ) );
-				EditorGUILayout.SelectableLabel( asset.GetType().ToString().Replace("UnityEngine.",string.Empty), GUILayout.Width( 70 ) );
-				EditorGUILayout.ObjectField( asset, typeof(object), false, GUILayout.Width( 150 ) );
 
-				if( GUILayout.Button( "Inspect", GUILayout.ExpandWidth( false ) ))
-					AssetDatabase.OpenAsset( asset );
-				
+				if ( path.StartsWith("Assets" ))
+				{
+					var asset = AssetDatabase.LoadAssetAtPath( path, typeof(Object) );
+
+					if ( asset == null )
+						continue;
+
+					EditorGUILayout.BeginHorizontal();
+					EditorGUILayout.SelectableLabel( meta, GUILayout.Width( MetaWidth ) );
+
+					EditorGUILayout.SelectableLabel( mCleansTypeName.Replace(asset.GetType().ToString(),string.Empty), GUILayout.Width( TypeWidth ) );
+					EditorGUILayout.ObjectField( asset, typeof(object), false, GUILayout.Width( ObjectWidth ) );
+
+					if( GUILayout.Button( "Inspect", GUILayout.Width( InspectWidth ) ))
+						AssetDatabase.OpenAsset( asset );
+
+				}
+				else
+				{
+					EditorGUILayout.BeginHorizontal();
+					EditorGUILayout.SelectableLabel( meta, GUILayout.Width( MetaWidth ) );
+					GUILayout.Space( TypeWidth + ObjectWidth + InspectWidth);
+					//Space of the selector button
+					GUILayout.Space( 12 );
+				}
 				if( GUILayout.Button( "Edit", GUILayout.ExpandWidth( false ) ))
 					OpenFileInTextEditor(path);
-				
-				EditorGUILayout.SelectableLabel( line.ToString(), GUILayout.Width( 40 ) );
+
+				EditorGUILayout.SelectableLabel( line.ToString(), GUILayout.Width( LineWidth ) );
 				EditorGUILayout.SelectableLabel( path );
 				EditorGUILayout.EndHorizontal();
 			}
@@ -106,12 +130,14 @@ namespace CoreEditor.Utils
 				}
 			}
 			
-			var extensions = new HashSet<string>{".prefab",".mat", ".unity", ".GUISkin"};
-			
-			var paths = from item in AssetDatabase.GetAllAssetPaths()
-				where (extensions.Contains( Path.GetExtension( item ) ))
-					orderby AssetDatabase.LoadAssetAtPath(item,typeof(Object)).GetType().ToString(), item
-					select item ;
+			var extensions = new HashSet<string>{".prefab", ".asset", ".mat", ".unity", ".GUISkin", ".anim", ".controller"};
+
+			var paths = AssetDatabase.GetAllAssetPaths()
+				.Where( ( path=>extensions.Contains( Path.GetExtension( path ) )))
+				.OrderBy( path=>{
+					var obj = AssetDatabase.LoadAssetAtPath(path,typeof(Object));
+					return obj != null ? obj.GetType().ToString(): string.Empty;
+				});
 			
 			mResults = new List<Result>();
 			
@@ -157,7 +183,7 @@ namespace CoreEditor.Utils
 			}
 		}
 
-		[MenuItem("Window/Tool/Find Broken References",false)]	
+		[MenuItem("Window/Find Broken References",false)]	
 		public static void FindBrokenReferencesToWindow()
 		{
 			var window = EditorWindow.GetWindow<FindBrokenReferences>();
