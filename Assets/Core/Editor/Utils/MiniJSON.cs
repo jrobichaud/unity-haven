@@ -34,7 +34,7 @@ using System.Text;
 using System.Globalization;
 using System.Linq;
 
-namespace CoreEngine.MiniJson {
+namespace CoreEditor.MiniJson {
 	// Example usage:
 	//
 	//  using UnityEngine;

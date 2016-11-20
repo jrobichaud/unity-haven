@@ -11,7 +11,7 @@ public static class AssetImportUtils
 		if ( string.IsNullOrEmpty( importer.userData ) == true )
 			return new Dictionary<string, object>();
 		
-		var structuredData = CoreEngine.MiniJson.Json.Deserialize( importer.userData );
+		var structuredData = CoreEditor.MiniJson.Json.Deserialize( importer.userData );
 		
 		var dico = structuredData as IDictionary<string, object>;
 		if ( dico == null )
@@ -67,7 +67,7 @@ public static class AssetImportUtils
 		else
 			dico[key] = value;
 
-		importer.userData = CoreEngine.MiniJson.Json.Serialize( dico );
+		importer.userData = CoreEditor.MiniJson.Json.Serialize( dico );
 	}
 
 	public static void SetUserData( string assetPath, string key, object value )
