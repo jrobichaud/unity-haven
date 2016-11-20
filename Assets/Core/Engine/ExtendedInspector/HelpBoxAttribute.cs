@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace CoreEngine
 {
@@ -9,7 +10,7 @@ namespace CoreEngine
 		Warning,
 		Error
 	}
-
+	[Conditional("UNITY_EDITOR")]
 	[AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = true )]
 	public sealed class HelpBoxAttribute : Attribute
 	{

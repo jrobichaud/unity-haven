@@ -14,7 +14,8 @@ MonoBehaviour:
   m_Sources:
   - {fileID: 102900000, guid: 517aca4268eaf4594a8f3a5d04b34c8f, type: 3}
   m_AssemblyReferences: []
-  m_Defines: []
+  m_Defines:
+  - UNITY_EDITOR
   m_ExportInlineDocumentation: 0
   m_IsDebug: 0
   m_AssemblyMeta:

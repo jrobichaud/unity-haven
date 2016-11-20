@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics;
 
 namespace CoreEngine
 {
+	[Conditional("UNITY_EDITOR")]
 	[AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true )]
 	public sealed class ToolTipAttribute : Attribute
 	{
