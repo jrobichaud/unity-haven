@@ -10,7 +10,9 @@ namespace CoreEngine
 		Warning,
 		Error
 	}
+
 	[Conditional("UNITY_EDITOR")]
+	[Conditional("PRESERVE_ATTRIBUTES")]
 	[AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = true )]
 	public sealed class HelpBoxAttribute : Attribute
 	{

@@ -4,6 +4,7 @@ using System.Diagnostics;
 namespace CoreEngine
 {
 	[Conditional("UNITY_EDITOR")]
+	[Conditional("PRESERVE_ATTRIBUTES")]
 	[AttributeUsage(AttributeTargets.Field)]
 	public sealed class SliderAttribute : Attribute
 	{
