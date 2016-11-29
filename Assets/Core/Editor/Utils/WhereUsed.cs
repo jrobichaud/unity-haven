@@ -87,9 +87,7 @@ public static class WhereUsed  {
 
 		var ignoreExtensions = new HashSet<string>(new string[]{".asset", ".prefs" ,".cs", ".boo", ".js", ".rsp", ".m", ".mm", ".py", ".h", ".plist", ".a", ".dll", ".pyc", ".scpt", ".userprefs", ".jar" ,".json", ".zip", ".xib", ".c", ".o" ,".patch", ".icns",  "" });
 
-		var assets = (from file in AssetDatabase.GetAllAssetPaths()
-						where ignoreExtensions.Contains( Path.GetExtension( file ).ToLower() ) == false
-						select file).ToArray();
+		var assets = AssetDatabase.GetAllAssetPaths().Where( file => !ignoreExtensions.Contains( Path.GetExtension( file ).ToLower() )).ToArray();
 		int total = assets.Length;
 		float invTotal = 1.0f / total;
 		int count = 0;
@@ -101,11 +99,9 @@ public static class WhereUsed  {
 				break;
 			if ( isResourceOrScene( asset ) )
 			{
-				referencesOutsideResources.UnionWith( from dependence in AssetDatabase.GetDependencies( new string [ ]{asset} )
-														where dependence.StartsWith( "Assets/Resources" ) == false
-															&& dependence != asset
-														select dependence
-													);
+				var dependencies = AssetDatabase.GetDependencies( new []{asset} )
+										.Where( dependency=> !dependency.StartsWith( "Assets/Resources" ) && dependency != asset );
+				referencesOutsideResources.UnionWith( dependencies);
 			}
 			else
 			{
@@ -174,9 +170,7 @@ public static class WhereUsed  {
 			pathAsDir += "/";
 
 		var referencedBy = new HashSet<string>();
-		var assets = (from file in AssetDatabase.GetAllAssetPaths()
-						where file.StartsWith( pathAsDir ) == false && file != path
-						select file).ToArray();
+		var assets = AssetDatabase.GetAllAssetPaths().Where( file=>!file.StartsWith( pathAsDir ) && file != path ).ToArray();
 
 		var total = assets.Length;
 		var invTotal = 1f / total;
@@ -269,9 +263,7 @@ public static class WhereUsed  {
 	{
 		get
 		{
-			var assembly = (from a in System.AppDomain.CurrentDomain.GetAssemblies()
-							where a.GetName().Name == "UnityEditor"
-							select a).First();
+			var assembly = AppDomain.CurrentDomain.GetAssemblies().First(a=>a.GetName().Name == "UnityEditor");
 			var playerSettingsType = assembly.GetType( "UnityEditor.Unsupported" );
 			var playerSettings = playerSettingsType.InvokeMember( "GetSerializedAssetInterfaceSingleton", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, null, typeof(Object), new object[]{"PlayerSettings"} ) as Object;
 			var activeEditorTrackerType = assembly.GetType( "UnityEditor.ActiveEditorTracker" );
