@@ -102,7 +102,7 @@ namespace CoreEngine
 
 		static void playmodeStateChangedWrapper(System.Action<System.Reflection.FieldInfo,System.Delegate,System.Delegate> strategy )
 		{
-			var editorApplicationType = Types.GetType( "UnityEditor.EditorApplication", "UnityEditor" );
+			var editorApplicationType = System.Type.GetType("UnityEditor.EditorApplication,UnityEditor");
 			var playmodeChangedMethod = editorApplicationType.GetField( "playmodeStateChanged", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static );
 			if ( playmodeChangedMethod != null )
 			{
@@ -117,7 +117,7 @@ namespace CoreEngine
 		{
 			get
 			{
-				return (bool)Types.GetType( "UnityEditor.EditorApplication", "UnityEditor" ).GetProperty("isPlaying", System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public).GetValue(null,new object[]{});
+				return (bool)System.Type.GetType( "UnityEditor.EditorApplication,UnityEditor" ).GetProperty("isPlaying", System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public).GetValue(null,new object[]{});
 			}
 		}
 		#endregion
