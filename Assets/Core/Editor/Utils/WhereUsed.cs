@@ -285,11 +285,8 @@ namespace CoreEditor.Utils
 		static Editor PlayerSettingsEditor
 		{
 			get {
-				var assembly = AppDomain.CurrentDomain.GetAssemblies().First( a => a.GetName().Name == "UnityEditor" );
-				var playerSettingsType = assembly.GetType( "UnityEditor.Unsupported" );
-				var playerSettings = playerSettingsType.InvokeMember( "GetSerializedAssetInterfaceSingleton", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, null, typeof( Object ), new object[]{ "PlayerSettings" } ) as Object;
-				var activeEditorTrackerType = assembly.GetType( "UnityEditor.ActiveEditorTracker" );
-				return activeEditorTrackerType.InvokeMember( "MakeCustomEditor", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, null, typeof( Editor ), new object[]{ playerSettings } ) as Editor;
+				var playerSettings = Unsupported.GetSerializedAssetInterfaceSingleton( "PlayerSettings" );
+				return Editor.CreateEditor( playerSettings );
 			}
 		}
 
