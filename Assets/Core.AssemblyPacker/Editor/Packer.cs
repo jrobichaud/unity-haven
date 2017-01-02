@@ -269,7 +269,7 @@ namespace CoreEditor.AssemblyPacker
 		
 		public static string GetFrameWorksFolder()
 		{
-			if (Application.platform == RuntimePlatform.WindowsEditor)
+			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.LinuxEditor)
 			{
 				return (Path.GetDirectoryName(EditorApplication.applicationPath) + "/Data/");
 			}
