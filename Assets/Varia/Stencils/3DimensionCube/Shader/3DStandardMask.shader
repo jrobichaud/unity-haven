@@ -1,4 +1,6 @@
-﻿Shader "Stencil/3DStandardMask"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Stencil/3DStandardMask"
 {
 	Properties
 	{
@@ -43,7 +45,7 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				return o;
 			}
 			

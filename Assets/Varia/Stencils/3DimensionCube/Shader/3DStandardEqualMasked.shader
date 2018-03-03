@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Stencil/3DStandardEqualMasked" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
@@ -43,7 +45,7 @@ Shader "Stencil/3DStandardEqualMasked" {
             v2f vert (appdata_base v)
             {
                 v2f o;
-                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.texcoord;
                 half3 worldNormal = UnityObjectToWorldNormal(v.normal);
                 half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
