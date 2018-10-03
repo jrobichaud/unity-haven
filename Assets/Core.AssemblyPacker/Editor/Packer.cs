@@ -181,9 +181,10 @@ namespace CoreEditor.AssemblyPacker
 				}
 				var sources = paths.ToArray();
 				var references = new List<string>() {
-					GetFrameWorksFolder() + "Managed/UnityEngine.dll",
-					UnityEngineUIAssemblyPath,
-				};
+                    typeof(string).Assembly.Location,
+                    GetFrameWorksFolder() + "Managed/UnityEngine.dll",
+					UnityEngineUIAssemblyPath
+                };
 				
 				bool isEditor = assembly.name.Contains("Editor");
 				if ( isEditor )
